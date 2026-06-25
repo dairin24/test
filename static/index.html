@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>車載ソフトウェア 要件定義 自動生成</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>車載ソフトウェア 要件定義 自動生成</h1>
+    <p class="subtitle">
+      要求ファイル (Markdown / テキスト / Excel / CSV / Word / PDF) から
+      ASPICE・ISO 26262 を踏まえた要件定義を生成します。
+    </p>
+  </header>
+
+  <main>
+    <section class="upload-panel">
+      <input type="file" id="fileInput"
+             accept=".md,.markdown,.txt,.csv,.xlsx,.xls,.docx,.pdf" />
+      <button id="generateBtn">要件定義を生成</button>
+      <span id="status" class="status"></span>
+    </section>
+
+    <section id="result" class="result hidden">
+      <h2>プロジェクト概要</h2>
+      <textarea id="overview" rows="3"></textarea>
+
+      <div class="toolbar">
+        <h2>要件一覧</h2>
+        <button id="addRowBtn" class="secondary">行を追加</button>
+      </div>
+      <div class="table-wrap">
+        <table id="reqTable">
+          <thead>
+            <tr>
+              <th>ID</th><th>タイトル</th><th>種別</th><th>ASIL</th>
+              <th>優先度</th><th>内容</th><th>根拠</th><th>出典</th>
+              <th>検証方法</th><th>受入基準<br>(改行区切り)</th><th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <h2>オープンイシュー / 確認事項</h2>
+      <textarea id="openIssues" rows="4"
+                placeholder="1行に1項目"></textarea>
+
+      <div class="export-panel">
+        <button id="exportMdBtn">Markdown でダウンロード</button>
+        <button id="exportXlsxBtn">Excel でダウンロード</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
